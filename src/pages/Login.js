@@ -46,21 +46,9 @@ const Login = () =>{
   }
 
   return(
-    <div>
- {/*   <div style={{margin: "0 auto", width: "25%", padding: "50px"}}>
-      <form onSubmit={handleSubmit}>
-        <label>Email: </label>
-        <input type="text" name="username" onChange={handleChange} value={input.email}/>
-        <br/>
-        <label>Password: </label>
-        <input type="password" name="password" onChange={handleChange} value={input.password}/>
-        <br/>
-        <button>Login</button>
-      </form> 
-      </div> */}
       <div style={{margin: "0 auto", width: "30%", padding: "50px"}}>
     <form onSubmit={handleSubmit}>    
-        <h2 style={{textAlign: 'center'}}>Register</h2>
+        <h2 style={{textAlign: 'center'}}>Login</h2>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" name="email" onChange={handleChange} value={input.email}/>
@@ -79,7 +67,6 @@ const Login = () =>{
 
       </form>
     </div>
-    </div> 
   )
 }
 

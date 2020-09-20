@@ -10,7 +10,7 @@ const ChangePassword = () =>{
   const [input,setInput] = useState({
     current_password : "",
     new_password : "",
-    new_confirm_assword : ""
+    new_confirm_password : ""
 })
 const [messages,setMessages] = useState("");
 
@@ -36,31 +36,26 @@ const [messages,setMessages] = useState("");
   }
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (input.current_password !== currentUser.password) {
-      setMessages("The old password you've entered is incorrect")
-      return
-  }
-
-  if (input.new_password !== input.new_confirm_password) {
-    setMessages("Password does not match")
-    return
-}
-
-    axios.post(`https://backendexample.sanbersy.com/api/change-password`,{
-      current_password: input.current_password,
-      new_password: input.new_password,
-      new_confirm_password: input.new_confirm_password
-    }).then(
-      (res)=> {
+      if (currentUser.password !== input.current_password) {
+              setMessages("The old password you've entered is incorrect")
+          }else if(input.new_password !== input.new_confirm_password) {
+            setMessages("Password does not match")
+        } else{ axios.post(`https://backendexample.sanbersy.com/api/change-password`,{
+              current_password: input.current_password,
+              new_password: input.new_password,
+              new_confirm_password: input.new_confirm_password
+            },{headers: {"Authorization" : `Bearer ${user.token}`}}).then(
+              (res)=> {
         console.log(res)
-        localStorage.setItem("user", JSON.stringify({id : currentUser.id,username: currentUser.username, password: input.new_password}))
+        localStorage.setItem("user", JSON.stringify({id : currentUser.id, password: input.new_password}))
             setMessages("Password changed successfully!")
       }
     )
+}
     setInput({
       current_password: "",
       new_password:"",
-      confirm_new_password:""
+      new_confirm_password:""
   })
   }
     return(
@@ -72,12 +67,7 @@ const [messages,setMessages] = useState("");
               <Alert message={messages} type="info" showIcon closable/>
               : null
             }
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="text" placeholder={user.name} readOnly />
-              </Form.Group>
-
-    
+ 
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Current Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" name="oldPassword" onChange={handleChange} value={input.current_password}/>

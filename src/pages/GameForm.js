@@ -3,10 +3,12 @@ import axios from 'axios'
 import { GameContext } from '../context/GameContext'
 import {Form, Row,Col, Container, Button} from 'react-bootstrap'
 import { UserContext } from '../context/UserContext'
+import { useHistory } from 'react-router-dom'
 
 const GameForm = ({}) => {
     const [games, setGames, inputGame, setInputGame] = useContext(GameContext)
     const [user] = useContext(UserContext)
+    let history = useHistory()
     
     const submitForm = (event) =>{
         event.preventDefault();
@@ -106,6 +108,20 @@ const GameForm = ({}) => {
         }
     }
 
+    const cancelHandle = () => {
+        setInputGame({
+            id: null,
+            name : "",
+            genre : "",
+            singlePlayer : false,
+            multiPlayer : false,
+            platform : "",
+            release : 2020,
+            image_url: ""
+        })
+        history.push("/game-list")
+    }
+
     return (
         <div className="form-film">
         
@@ -153,6 +169,7 @@ const GameForm = ({}) => {
 
               <Button variant="success" size="lg" block type="submit" >Submit</Button><br/>
         </form>
+        <Button variant="danger" size="lg" block type="submit" onClick={cancelHandle} >Cancel</Button>
         </Container>
     </div>
     )

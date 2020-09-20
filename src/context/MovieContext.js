@@ -6,7 +6,6 @@ export const MovieProvider = props => {
     const [movies, setMovies] = useState(null)
     const [inputMovie, setInputMovie] = useState({
         id: null,
-        updated_at: "",
         title: "",
         description: "",
         year: 2020,

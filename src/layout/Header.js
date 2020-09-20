@@ -25,12 +25,12 @@ const HeaderBar = () => {
     <div>
       <Navbar bg="dark" variant="dark">
       <Nav className="mr-auto">
-        <Nav.Link><Link to="/">Home</Link></Nav.Link>
+        <Nav.Link><Link className="for-link" to="/">Home</Link></Nav.Link>
         {
           user !== null && (
             <>
-          <Nav.Link><Link to="/movie-list">Movie Editor</Link></Nav.Link>
-          <Nav.Link><Link to="/game-list">Game Editor</Link></Nav.Link>
+          <Nav.Link><Link className="for-link" to="/movie-list">Movie Editor</Link></Nav.Link>
+          <Nav.Link><Link  className="for-link" to="/game-list">Game Editor</Link></Nav.Link>
           </>
           )
         }
@@ -40,8 +40,8 @@ const HeaderBar = () => {
         {
           user === null && (
             <>
-            <Button variant="outline-info" style={{marginRight: '15px'}}><Link to="/Register">Register</Link></Button>
-            <Button variant="outline-info"><Link to="/Login">Login</Link></Button>
+            <Button variant="outline-info" style={{marginRight: '15px'}}><Link className="for-link"  to="/Register">Register</Link></Button>
+            <Button variant="outline-info"><Link className="for-link" to="/Login">Login</Link></Button>
             </>
           )
         }
@@ -52,7 +52,7 @@ const HeaderBar = () => {
               <Avatar size={40} style={{marginRight: '15px', backgroundColor:'rgb(23,162,184)'}}>{user.name}</Avatar>
         
             
-            <Button variant="outline-info" style={{marginRight: '15px'}}><Link to="/ChangePassword">Change Password</Link></Button>
+            <Button variant="outline-info" style={{marginRight: '15px'}}><Link className="for-link" to="/ChangePassword">Change Password</Link></Button>
             <Button variant="outline-info" onClick={handleLogout}>Logout</Button>
             </>
           )

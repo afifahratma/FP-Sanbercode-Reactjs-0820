@@ -54,6 +54,9 @@ section {
 }
 
 .for-link{
-  color: #FFFF;
+  color: inherit;
+  text-decoration: none ;
+}
+.for-link:hover{
   text-decoration: none ;
 }

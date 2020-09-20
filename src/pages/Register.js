@@ -1,9 +1,6 @@
 import React, { useContext, useState } from "react"
 import {UserContext} from "../context/UserContext"
 import axios from "axios"
-/* import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
-import { Form, Input, Button } from 'antd';
-import { propTypes } from "react-bootstrap/esm/Image"; */
 import {Form, Button} from 'react-bootstrap'
 import {Link, useHistory} from "react-router-dom"
 
@@ -71,7 +68,7 @@ const Register = () =>{
       </div>  */}
     
        
-    <div style={{margin: "0 auto", width: "30%", padding: "50px"}}>
+    <div style={{margin: "0 auto", width: "40%", padding: "50px"}}>
     <form onSubmit={submitHandle}>    
       <h2 style={{textAlign: 'center'}}>Register</h2>
         <Form.Group>
@@ -91,9 +88,11 @@ const Register = () =>{
           <Form.Text> password must be at least 6 characters.</Form.Text>
         </Form.Group>
       
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" block>
           Register
-        </Button>
+        </Button><br/>
+        <p style={{textAlign: 'center'}}>  already have an account? <Link to="/Login">Login</Link></p>
+        
 
       </form>
     </div>

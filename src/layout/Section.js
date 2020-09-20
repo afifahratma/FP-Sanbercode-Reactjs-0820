@@ -8,6 +8,8 @@ import {GameProvider} from "../context/GameContext"
 import Home from '../pages/Home'
 import MovieDetail from '../pages/MovieDetail'
 import Movie from '../pages/Movie'
+import MovieForm from '../pages/MovieForm'
+import GameForm from '../pages/GameForm'
 import GameDetail from '../pages/GameDetail'
 import {Layout} from 'antd'
 import { Container } from "react-bootstrap";
@@ -31,15 +33,17 @@ return (
         <Route exact path="/Login" component={Login}/>
         <Route exact path="/Register" component={Register}/>
         <Route exact path="/ChangePassword" component={ChangePassword}/>
-
+        
         <MovieProvider>
         <Route exact path="/movie-list" component={Movie}/>
-        
+        <Route exact path="/movie-list/MovieForm/:id" component={MovieForm}/>
+
         {/* <Route exact path="/movie-list"component={MovieForm}/> */}
         </MovieProvider>
 
         <GameProvider>
           <Route exact path="/game-list" component={Game}/>
+          <Route exact path="/game-list/GameForm/:id" component={GameForm}/>
           {/* <Route exact path="/game-list" component={GameForm}/> */}
         </GameProvider>
 

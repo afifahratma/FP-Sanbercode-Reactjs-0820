@@ -3,8 +3,10 @@ import axios from 'axios'
 import { MovieContext } from '../context/MovieContext'
 import {Form, Row,Col, Container, Button} from 'react-bootstrap'
 import {UserContext} from '../context/UserContext'
+import {useHistory} from 'react-router-dom'
 
 const MovieForm = ({}) => {
+    let history = useHistory()
     const [movies, setMovies, inputMovie, setInputMovie] = useContext(MovieContext)
     const [user] = useContext(UserContext)
 
@@ -29,7 +31,6 @@ const MovieForm = ({}) => {
             axios.put(`http://backendexample.sanbercloud.com/api/data-movie/${inputMovie.id}`,{title, description, year, duration, genre, rating, review, image_url}, {headers: {"Authorization" : `Bearer ${user.token}`}})
             .then( res => {
                 let newMovie = movies.find(x => x.id === inputMovie.id)
-                newMovie.title = title
                 newMovie.description = description
                 newMovie.year = year
                 newMovie.duration = duration
@@ -55,6 +56,8 @@ const MovieForm = ({}) => {
                 rating: 0,
                 review: "",
                 image_url: "" })
+
+        history.push("/movie-list")
     }
     
     const handleChange = (event) => {
@@ -108,13 +111,26 @@ const MovieForm = ({}) => {
 
     }
 
+    const cancelHandle = () => {
+        history.push("/movie-list")
+        setInputMovie({id: null, 
+            title: "",
+            description:"",
+            year: 2020,
+            duration: 120,
+            genre: "",
+            rating: 0,
+            review: "",
+            image_url: "" })
+    }
+
     return(
 
-        <div className="form-film">
+        <div>
         
         <Container>
         <h2 style={{marginTop: '1em', textAlign: 'center'}}>Movie Form</h2>
-        <form onSubmit={submitForm}>
+        <form onSubmit={submitForm} style={{marginBottom:'1em'}}>
             <Form.Group role="form">
                 <Form.Label>Title :</Form.Label>
                 <Form.Control required name="title" type="text" className="form-control" value={inputMovie.title} onChange={handleChange} placeholder="Title Movie" />
@@ -157,8 +173,10 @@ const MovieForm = ({}) => {
                 </Row>
             </Form.Group>
 
-              <Button variant="success" size="lg" block type="submit" >Submit</Button><br/>
+              <Button variant="success" size="lg" block type="submit" >Submit</Button>{ ' '}
+              
         </form>
+        <Button variant="danger" size="lg" block type="submit" onClick={cancelHandle} >Cancel</Button>
         </Container>
     </div>
 

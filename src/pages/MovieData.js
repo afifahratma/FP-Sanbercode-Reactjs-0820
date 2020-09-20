@@ -5,10 +5,11 @@ import {Table, Button, Container
 import axios from 'axios'
 import { UserContext } from '../context/UserContext'
 import { Input, Select} from 'antd'
-
+import {useHistory} from 'react-router-dom'
 
 
 const MovieData = () => {
+    let history = useHistory()
     const [movies, setMovies, , setInputMovie] = useContext(MovieContext)
     const [sortType,setSortType] = useState(true)
     const [user] = useContext(UserContext)
@@ -100,6 +101,7 @@ const MovieData = () => {
           const editForm = (event) => {
             let idMovies = parseInt(event.target.value)
             let dataMovies = movies.find(x=> x.id === idMovies)
+            history.push(`/movie-list/MovieForm/${idMovies}`)
             setInputMovie({
                 id: idMovies,
                 title: dataMovies.title,
@@ -136,7 +138,7 @@ const MovieData = () => {
                         <Select placeholder="Filters">
                             <Option value="1">Year</Option>
                             <Option value="2">Rating</Option>
-                            <Option value="2">Duration</Option>
+                            <Option value="3">Duration</Option>
                         </Select>
                         <Input style={{ width: 100, textAlign: 'center' }} placeholder="Minimum" type="number"/>
                         <Input
@@ -190,7 +192,7 @@ const MovieData = () => {
                             <td>{item.rating}</td>
                             <td>{item.review}</td>
                             <td>
-                            <Button variant="success" type="submit" value={item.id} onClick={editForm}>Edit</Button>{' '}
+                            <Button variant="success" type="submit" value={item.id} onClick={editForm} style={{marginBottom:'10px'}}>Edit</Button>
                             <Button variant="danger" type="submit" value={item.id} onClick={deleteForm}>Delete</Button>{' '}
 
                             </td>

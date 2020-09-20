@@ -4,12 +4,14 @@ import {Table, Button, Container} from 'react-bootstrap'
 import axios from 'axios'
 import { UserContext } from '../context/UserContext'
 import { Input, Select} from 'antd'
+import { useHistory } from 'react-router-dom'
 
 const GameData =() => {
     const [games, setGames, ,setInputGame] = useContext(GameContext)
     const [sortType,setSortType] = useState(true)
     const [user] = useContext(UserContext)
     const { Option } = Select;
+    let history = useHistory()
 
     useEffect(() => {
     if(games === null){
@@ -18,8 +20,6 @@ const GameData =() => {
             setGames(res.data.map(el=>{ 
                 return {
                     id : el.id,
-                    created_at : el.created_at,
-                    updated_at : el.updated_at,
                     name : el.name,
                     genre : el.genre,
                     singlePlayer : el.singlePlayer,
@@ -102,9 +102,9 @@ const GameData =() => {
     const editForm = (event) => {
         let idGames = parseInt(event.target.value)
         let dataGames = games.find(x=> x.id === idGames)
+        history.push(`/game-list/GameForm/${idGames}`)
         setInputGame({
             id: idGames,
-            updated_at : dataGames.updated_at,
             name: dataGames.name,
             genre: dataGames.genre,
             singlePlayer: dataGames.singlePlayer,

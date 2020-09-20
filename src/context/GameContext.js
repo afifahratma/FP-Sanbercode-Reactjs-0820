@@ -7,7 +7,6 @@ export const GameProvider = props => {
     const [games, setGames] = useState(null)
     const [inputGame, setInputGame] = useState({
         id: null,
-        updated_at: "",
         name: "",
         genre: "",
         singlePlayer: true,

@@ -39,7 +39,6 @@ class Home extends Component {
     .then(res => {
       let movies = res.data.map(el=>{ return {
         id: el.id, 
-        updated_at: el.updated_at,
         title: el.title, 
         year: el.year,
         rating: el.rating,
@@ -54,7 +53,6 @@ class Home extends Component {
     .then(res => {
       let games = res.data.map(el=>{ return {
         id: el.id, 
-        updated_at: el.updated_at,
         name : el.name,
         genre : el.genre,
         singlePlayer : el.singlePlayer,
@@ -96,9 +94,6 @@ class Home extends Component {
                                   <Button variant="primary"> 
                                   <Link className="for-link" to={`/MovieDetail/${item.id}`}>Show Detail</Link>
                                     </Button>
-                                    <Card.Footer>
-                                    <small className="text-muted">Last updated {item.updated_at}</small>
-                                  </Card.Footer>
                                   </Card.Body>
                 
                           </Card>
@@ -131,9 +126,7 @@ class Home extends Component {
                                   <Link className="for-link"to={`/GameDetail/${el.id}`}>Show Detail</Link>
                                   
                                     </Button>
-                                    <Card.Footer style={{marginTop: '20px'}}>
-                                    <small className="text-muted">Last updated {el.updated_at}</small>
-                                  </Card.Footer>
+                                   
                                   </Card.Body>
                 
                           </Card>

@@ -9,8 +9,6 @@ const Movie = () => {
     const [movies, setMovies] = useContext(MovieContext)
     const [query, setQuery] = useState("")
   
-    
-
     const searchMovie = (query) => {
         let result = movies.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
         setMovies(result)
