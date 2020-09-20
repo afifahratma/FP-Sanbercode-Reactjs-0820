@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+section {
+    margin: 50px;
+    /* background-color: white; */
+    position: relative;
+    padding: 20px;
+    top: 20px;
+    margin-bottom: 100px;
+}
+
+#img-detail{
+  width: 50%;
+  border: 8px solid #FFFF;
+  outline: #DEE2E6 solid 1px;
+  margin: auto; 
+}
+
+.for-link{
+  color: #FFFF;
+  text-decoration: none ;
+}
