@@ -6,10 +6,12 @@ import {Layout} from 'antd'
 import { BackTop } from 'antd'
 
 function truncateString(str, num) {
+  if (str !== null){
   if (str.length <= num) {
     return str
   }
   return str.slice(0, num) + '...'
+}
 }
 
 const style = {
@@ -109,7 +111,7 @@ class Home extends Component {
                           </BackTop>
                     <Container>
                     <h2 style={{marginTop: '1em', marginBottom: '1em'}}>Games Reviews</h2>
-                    <Row md={4} style={{marginBottom:'1em'}}> 
+                    <Row md={3} style={{marginBottom:'1em'}}> 
                    
                     
                     {

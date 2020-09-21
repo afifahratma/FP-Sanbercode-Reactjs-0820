@@ -180,7 +180,7 @@ const GameData =() => {
                                     <td>{el.platform}</td>
                                     <td>{el.release}</td>
                                     <td>
-                                        <Button variant="success"type="submit" value={el.id} onClick={editForm}>Edit</Button>{' '}
+                                        <Button variant="success"type="submit" value={el.id} onClick={editForm} style={{marginBottom:'10px'}}>Edit</Button>{' '}
                                         <Button variant="danger" type="submit" value={el.id} onClick={deleteForm}>Delete</Button>{' '}
                                     </td>
                                 </tr>
